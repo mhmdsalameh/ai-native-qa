@@ -28,4 +28,6 @@ Load the `qa-requirements` skill.
    next section id, and tell the user to `/clear` and run `/qa-ingest` again to continue.
 
 **Gate:** the tester reviews the question list and the slice names. Report: cards per slice,
-questions by kind, sections without testable rules.
+questions by kind, sections without testable rules. Then review the open questions with the
+tester as `qa-requirements` "Question review with the tester" says (AskUserQuestion, one entry
+per question).

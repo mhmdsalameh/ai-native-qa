@@ -89,7 +89,8 @@ Scripts (Node built-ins only; run them with the Bash tool):
 - Large outputs (search results, logs) go to a file; read the part you need.
 - **Ask with options.** When the tester must choose (a setting, a gate, the next step), use the
   AskUserQuestion tool: 2 to 4 options, the recommended one first and marked "(Recommended)", at
-  most 4 questions per call. Free text only for names, URLs, paths and answers to BA questions.
+  most 4 questions per call. Free text only for names, URLs and paths. BA questions also go
+  through AskUserQuestion, one entry per question (`qa-requirements`, "Question review").
   On a surface without that tool, write the options as a numbered list.
 
 ## Data classes (`.qa/config.json` data_class)

@@ -20,5 +20,7 @@ Load the `qa-requirements` skill.
    citing its REQ id; render with `qa-docx.cjs render ... --template <fsd template>`.
 5. Export the questions for the BA: `qa-rtm.cjs export` (sheet Questions).
 
-**Gate:** the tester reviews the questions (and the FSD) before they go to the BA. After the BA
+**Gate:** the tester reviews the questions (and the FSD) before they go to the BA: review the open
+questions as `qa-requirements` "Question review with the tester" says, before the export in step 5.
+After the BA
 answers and an FSD is reviewed, ingest the reviewed FSD as the next version (`/qa-ingest`, `/qa-delta`).

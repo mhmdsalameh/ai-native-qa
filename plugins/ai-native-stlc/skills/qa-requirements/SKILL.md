@@ -71,6 +71,26 @@ Ask a question when the text is:
 Vague words to flag: fast, quick, easy, user-friendly, intuitive, appropriate, adequate,
 flexible, robust, secure, efficient, normally, usually, some, several, etc., and/or, TBD.
 
+### Question review with the tester
+
+At a gate that reviews questions, first print the counts by kind (one line per kind, ids only),
+then walk every `open` question with the AskUserQuestion tool. Never ask the tester to answer a
+printed list.
+
+- One entry per question, at most 4 per call, in id order. `header`: the id (`Q-0005`).
+  `question`: the question text plus the section id, so it stands alone.
+- Options, 2 to 4: 1 or 2 candidate answers taken from the document's readings (for a conflict,
+  each side as the source states it), then "Send to BA (Recommended)" and "Withdraw". Never invent
+  a candidate the text does not support; with no supported reading, offer only the last two.
+- Apply each answer to the file before the next call:
+  - a candidate or "Other" text → `status: "answered"`, `answer:` the tester's words, `asked_to:
+    "tester"`; update the affected cards' body (the quote stays the document's text).
+  - "Send to BA" → no change (stays `open`).
+  - "Withdraw" → `status: "withdrawn"`.
+- After the last call, run `qa-rtm.cjs sync` and report: answered, sent to BA, withdrawn.
+
+On a surface without AskUserQuestion, write each question with its options as a numbered list.
+
 ## Risk
 
 high = money, personal data, security, legal, or a main flow most users take.
