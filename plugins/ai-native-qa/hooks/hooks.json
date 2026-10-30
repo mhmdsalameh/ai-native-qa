@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/qa/qa-session.cjs\"; exit 0",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|Bash|PowerShell|mcp__ado__.*|mcp__.*(navigate|new_page|tabs_create).*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/qa/qa-guard.cjs\"; exit 0",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

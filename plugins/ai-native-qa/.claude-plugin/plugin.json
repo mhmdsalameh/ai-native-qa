@@ -1,0 +1,12 @@
+{
+  "name": "ai-native-qa",
+  "displayName": "AI-Native QA",
+  "version": "1.0.1",
+  "description": "The complete QA lifecycle with Claude, from requirements to release. You approve every decision.\n- 13 commands for each stage: requirements, test plan, test cases, test runs, bug reports, user manual, release report. Start with /ai-native-qa:qa\n- 8 skills: QA know-how\n- 2 agents: QA assistant, read-only reviewer\n- Safety checks: your test sites only, no personal data, no unapproved bugs\n- Word and Excel output, English or Arabic\nNeeds Node.js. Works in Cowork and Claude Code.",
+  "author": {
+    "name": "mhmdsalameh",
+    "url": "https://github.com/mhmdsalameh/ai-native-qa"
+  },
+  "icon": "./.claude-plugin/icon.png",
+  "defaultEnabled": true
+}
