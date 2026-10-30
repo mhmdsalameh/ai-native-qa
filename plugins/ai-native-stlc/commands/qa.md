@@ -1,5 +1,5 @@
 ---
-description: Print the ai-native-qa lifecycle map and detect where the current QA project is and what to run next. Router/help for the /qa-* commands.
+description: Print the ai-native-stlc lifecycle map and detect where the current QA project is and what to run next. Router/help for the /qa-* commands.
 ---
 
 # /qa — where are we, what is next

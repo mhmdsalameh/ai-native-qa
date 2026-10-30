@@ -1,9 +1,9 @@
 ---
 name: qa-lifecycle
-description: The ai-native-qa lifecycle - how Claude does a QA team's work (requirements analysis, FSD, test plan, test cases, web/API/manual execution, valid bug reports, user manuals, summary reports) at low token cost. Covers the stage map and /qa-* commands, the project folder, the scripts that hold the state, the session and token rules, data classes, and what works on each Claude surface. Use at the start of any QA session, when the user mentions an FSD/BRD/SRS, test cases, a bug report, an RTM, a user manual or /qa, and before choosing which /qa-* command to run.
+description: The ai-native-stlc lifecycle - how Claude does a QA team's work (requirements analysis, FSD, test plan, test cases, web/API/manual execution, valid bug reports, user manuals, summary reports) at low token cost. Covers the stage map and /qa-* commands, the project folder, the scripts that hold the state, the session and token rules, data classes, and what works on each Claude surface. Use at the start of any QA session, when the user mentions an FSD/BRD/SRS, test cases, a bug report, an RTM, a user manual or /qa, and before choosing which /qa-* command to run.
 ---
 
-# ai-native-qa lifecycle
+# ai-native-stlc lifecycle
 
 Claude does the QA work; the tester owns every judgment. Two failures shaped this harness, from
 an unguided run on a 70-page FSD: **83 bugs reported, 15 valid (18%)** and **26 million tokens**.
@@ -29,8 +29,8 @@ no check before a finding became a bug. Each rule below removes one of those cau
 | - | `/qa` | Where is this project, what is next | - |
 
 Run `/qa` when unsure. Stages pass work through files, never through the chat.
-From this plugin each command is typed as `/ai-native-qa:<name>` (for example
-`/ai-native-qa:qa-init`); the files write `/qa-init` for short.
+From this plugin each command is typed as `/ai-native-stlc:<name>` (for example
+`/ai-native-stlc:qa-init`); the files write `/qa-init` for short.
 
 ## The project folder (state lives in files)
 

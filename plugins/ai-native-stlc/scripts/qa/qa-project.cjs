@@ -110,7 +110,7 @@ function init(dir, opts) {
   }
   writeIfMissing(path.join(root, 'STATE.md'), `# STATE.md — ${cfg.project}\n\n## Verified facts\n\n## General rules\n\n## Open failures\n\n## Lessons learned\n\n## Last session\n`, made);
   writeIfMissing(path.join(root, 'README.md'),
-    `# ${cfg.project}\n\nQA project folder managed by the ai-native-qa harness. Start a session in this folder (CLI, IDE or the desktop app's Code tab) and run \`/qa\`; \`.claude/settings.json\` starts it as the qa-orchestrator agent.\n\n` +
+    `# ${cfg.project}\n\nQA project folder managed by the ai-native-stlc harness. Start a session in this folder (CLI, IDE or the desktop app's Code tab) and run \`/qa\`; \`.claude/settings.json\` starts it as the qa-orchestrator agent.\n\n` +
     '| Folder | Holds |\n| --- | --- |\n| source/ | The documents you received (FSD, BRD, designs) |\n| fsd/<version>/ | The split document: index.md and one file per section |\n| cards/ | One requirement card per testable rule (REQ-0001.md) |\n| questions/ | Questions for the BA (Q-0001.md) |\n| cases/ | Test cases per feature slice (<slice>.json) |\n| scripts/ | Saved replay scripts (Playwright) |\n| evidence/ | Screenshots, logs and traces, by test case and run |\n| bugs/ | Bug candidates and their five checks (C-0001.json) |\n| deliverables/ | Generated Word and Excel files |\n| templates/ | Company or client templates |\n| .qa/ | config.json and rtm.json (the RTM). Do not edit rtm.json by hand |\n', made);
   return { root, made, notes };
 }

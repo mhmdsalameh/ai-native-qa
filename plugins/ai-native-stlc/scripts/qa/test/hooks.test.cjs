@@ -136,11 +136,11 @@ test('session hook prints project state, or how to start', () => {
   assert.match(out, /next: ingest the FSD/);
   assert.match(out, /\[QA\] Agent: none\. This session is not the QA orchestrator.*safety checks still apply/);
   assert.match(hook(SESSION, { cwd: dir, agent_type: 'qa-orchestrator' }), /\[QA\] Agent: qa-orchestrator \(QA instructions and gates active\)/);
-  assert.match(hook(SESSION, { cwd: dir, agent_type: 'ai-native-qa:qa-orchestrator' }), /\[QA\] Agent: ai-native-qa:qa-orchestrator \(QA instructions/);
+  assert.match(hook(SESSION, { cwd: dir, agent_type: 'ai-native-stlc:qa-orchestrator' }), /\[QA\] Agent: ai-native-stlc:qa-orchestrator \(QA instructions/);
   assert.match(hook(SESSION, { cwd: dir, agent_type: 'not-qa-orchestrator' }), /\[QA\] Agent: not-qa-orchestrator\. This session is not/);
   assert.strictEqual(hook(SESSION, { cwd: os.tmpdir() }), '', 'outside a project, other sessions get no QA text');
   assert.match(hook(SESSION, { cwd: os.tmpdir(), agent_type: 'qa-orchestrator' }), /No QA project/);
-  assert.match(hook(SESSION, { cwd: os.tmpdir(), agent_type: 'ai-native-qa:qa-orchestrator' }), /No QA project/);
+  assert.match(hook(SESSION, { cwd: os.tmpdir(), agent_type: 'ai-native-stlc:qa-orchestrator' }), /No QA project/);
 });
 
 test('plugin scope: the guard acts for the orchestrator or inside a project, and nowhere else', () => {
@@ -150,7 +150,7 @@ test('plugin scope: the guard acts for the orchestrator or inside a project, and
   const ado = extra => hook(GUARD, { tool_name: 'mcp__ado__wit_create_work_item', cwd: outside, tool_input: adoBug, ...extra });
   assert.strictEqual(ado({}), null, 'another session outside a project is not guarded');
   assert.strictEqual(ado({ agent_type: 'sdlc-orchestrator' }), null);
-  assert.strictEqual(ado({ agent_type: 'ai-native-qa:qa-orchestrator' }).permissionDecision, 'deny');
+  assert.strictEqual(ado({ agent_type: 'ai-native-stlc:qa-orchestrator' }).permissionDecision, 'deny');
   assert.strictEqual(ado({ agent_type: 'not-qa-orchestrator' }), null);
   const intoProject = hook(GUARD, { tool_name: 'Write', cwd: outside, tool_input: { file_path: path.join(dir, '.qa', 'rtm.json'), content: '{}' } });
   assert.strictEqual(intoProject.permissionDecision, 'deny', 'a write into a project is guarded from any folder');
@@ -181,7 +181,7 @@ test('plugin scope: with the standalone orchestrator installed, its session is l
   fs.writeFileSync(path.join(cfg, 'agents', 'qa-orchestrator.md'), '---\nname: qa-orchestrator\nhooks:\n  PreToolUse: []\n---\n');
   assert.strictEqual(rtmWrite('qa-orchestrator'), null, 'standalone agent with hooks: it guards, the plugin stays out');
   assert.strictEqual(hook(SESSION, { cwd: dir, agent_type: 'qa-orchestrator' }, env), '');
-  assert.strictEqual(rtmWrite('ai-native-qa:qa-orchestrator').permissionDecision, 'deny', 'the plugin agent is still guarded');
+  assert.strictEqual(rtmWrite('ai-native-stlc:qa-orchestrator').permissionDecision, 'deny', 'the plugin agent is still guarded');
   assert.strictEqual(rtmWrite('Explore').permissionDecision, 'deny', 'other agents inside a project are still guarded');
   fs.writeFileSync(path.join(cfg, 'agents', 'qa-orchestrator.md'), '---\nname: qa-orchestrator\n---\n');
   assert.strictEqual(rtmWrite('qa-orchestrator').permissionDecision, 'deny', 'a user agent without hooks does not switch the plugin off');

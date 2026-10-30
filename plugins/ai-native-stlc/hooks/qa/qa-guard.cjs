@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// PreToolUse hook of the ai-native-qa plugin. It runs in every session and acts only in QA
+// PreToolUse hook of the ai-native-stlc plugin. It runs in every session and acts only in QA
 // sessions (scope.cjs). Rules live in scripts/qa/lib/guards.cjs.
 // Deny/ask via JSON on stdout, exit 0. In a QA session an internal error denies: in a project with
 // real data a silent allow is the worse failure. Outside one it never blocks.

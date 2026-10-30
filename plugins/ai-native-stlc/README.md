@@ -1,8 +1,8 @@
-# AI-Native QA
+# AI Native STLC
 
 Claude does a QA team's work; the tester owns every judgment. Requirement cards with verbatim
 quotes, FSD, test plan, test cases, web/API/manual execution with evidence, a five-check bug
-validity gate, Azure DevOps filing, user manuals and summary reports. Start with `/ai-native-qa:qa`.
+validity gate, Azure DevOps filing, user manuals and summary reports. Start with `/ai-native-stlc:qa`.
 
 ## Requirements
 
@@ -21,11 +21,11 @@ validity gate, Azure DevOps filing, user manuals and summary reports. Start with
 |---|---|
 | Organization (Owner) | **Organization settings > Plugins & skills > Add > Sync from GitHub** with `mhmdsalameh/ai-native-qa`, then set **Default access** |
 | One account | **Customize > Plugins > Add > Upload plugin** with the zip, or **Add > Add marketplace** with `mhmdsalameh/ai-native-qa` |
-| Claude Code CLI only | `claude plugin marketplace add mhmdsalameh/ai-native-qa`, then `claude plugin install ai-native-qa@ai-native-qa` |
+| Claude Code CLI only | `claude plugin marketplace add mhmdsalameh/ai-native-qa`, then `claude plugin install ai-native-stlc@ai-native-stlc` |
 
 A plugin on a claude.ai account also syncs to that person's Claude Code.
 
-Commands are namespaced: `/ai-native-qa:qa-init`. A bare `/qa-init` in the files means that.
+Commands are namespaced: `/ai-native-stlc:qa-init`. A bare `/qa-init` in the files means that.
 
 ## Rollout to an organization
 
@@ -44,7 +44,7 @@ Commands are namespaced: `/ai-native-qa:qa-init`. A bare `/qa-init` in the files
 
 ## Start a QA session
 
-`/ai-native-qa:qa-init` creates the project folder and its `.claude/settings.json` with
+`/ai-native-stlc:qa-init` creates the project folder and its `.claude/settings.json` with
 `"agent": "qa-orchestrator"`, so every session opened in that folder (CLI, IDE, desktop Code tab)
 starts as the orchestrator. The CLI also takes `claude --agent qa-orchestrator`.
 
@@ -74,7 +74,7 @@ the plugin does can block.
 
 Nothing breaks. When the session runs as the standalone `qa-orchestrator` (whose frontmatter
 already runs these hooks), the plugin's hooks stay out, so nothing runs twice. The skills and
-commands appear twice (`/qa-init` and `/ai-native-qa:qa-init`); use one set. To keep the plugin out
+commands appear twice (`/qa-init` and `/ai-native-stlc:qa-init`); use one set. To keep the plugin out
 of Claude Code on that machine, set `"syncClaudeAiPlugins": false` in `~/.claude/settings.json`.
 
 ## Maintainers

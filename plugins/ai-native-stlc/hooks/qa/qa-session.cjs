@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// SessionStart hook of the ai-native-qa plugin: in a QA project, prints the project's state so the
+// SessionStart hook of the ai-native-stlc plugin: in a QA project, prints the project's state so the
 // session starts from the files, not from memory. stdout becomes session context. Never blocks.
 // Outside a project it speaks only to the orchestrator, so other sessions get no QA text.
 const fs = require('fs');
@@ -17,7 +17,7 @@ process.stdin.on('end', () => {
     if (standaloneRuns(input)) return;
     const root = projectAt(input.cwd || process.cwd());
     if (!root) {
-      if (isOrchestrator(input)) process.stdout.write('[QA] No QA project in this folder. Run /ai-native-qa:qa-init to create one, or open a project folder (it has .qa/config.json).\n');
+      if (isOrchestrator(input)) process.stdout.write('[QA] No QA project in this folder. Run /ai-native-stlc:qa-init to create one, or open a project folder (it has .qa/config.json).\n');
       return;
     }
     const qa = path.join(__dirname, '..', '..', 'scripts', 'qa');

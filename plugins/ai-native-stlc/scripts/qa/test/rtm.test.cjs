@@ -57,7 +57,7 @@ test('init sets the orchestrator as the project agent and only reports on an exi
   const cases = [
     ['{"model":"opus"}', /no "agent" key/],
     ['{"agent":"sdlc-orchestrator"}', /do not start as qa-orchestrator/],
-    ['{"agent":"ai-native-qa:qa-orchestrator"}', null],
+    ['{"agent":"ai-native-stlc:qa-orchestrator"}', null],
     ['{ broken', /not valid JSON/],
   ];
   for (const [text, note] of cases) {
